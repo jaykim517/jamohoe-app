@@ -21,7 +21,12 @@
 </head>
 <body>
 <!-- 자모회 앱(Google Apps Script 웹앱)을 화면 가득 띄움 -->
-<iframe src="https://script.google.com/macros/s/AKfycbyv5yQfuZcA5MAEa9BiHFlPDFjB9eiC0-ZwIoBqMm3egmivsNgaTMki1vo6U4XAqV8meQ/exec"
-        title="청라3동성당 유초등부 자모회" allow="clipboard-write"></iframe>
+<iframe id="app" title="청라3동성당 유초등부 자모회" allow="clipboard-write"></iframe>
+<script>
+  // 임원 전용 링크(주소 끝 ?k=임원키)로 열면 열쇠를 앱에 넘겨서 회계가 비밀번호 없이 열려요
+  var EXEC = 'https://script.google.com/macros/s/AKfycbyv5yQfuZcA5MAEa9BiHFlPDFjB9eiC0-ZwIoBqMm3egmivsNgaTMki1vo6U4XAqV8meQ/exec';
+  var k = new URLSearchParams(location.search).get('k');
+  document.getElementById('app').src = EXEC + (k ? '?k=' + encodeURIComponent(k) : '');
+</script>
 </body>
 </html>
